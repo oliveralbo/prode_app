@@ -1,0 +1,11 @@
+<h1>Championships</h1>
+
+<%= link_to 'New Championship', new_championship_path %>
+
+<ul>
+  <% @championships.each do |championship| %>
+    <li>
+      <%= link_to championship.name, championship_path(championship) %> - <%= championship.team_count %> teams
+    </li>
+  <% end %>
+</ul>

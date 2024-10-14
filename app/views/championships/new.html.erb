@@ -1,0 +1,22 @@
+<h1>New Championship</h1>
+
+<%= form_with model: @championship, local: true do |form| %>
+  <div>
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div>
+    <%= form.label :team_count %>
+    <%= form.number_field :team_count %>
+  </div>
+
+  <div>
+    <%= form.label :round_type %>
+    <%= form.select :round_type, [['Single Elimination', 'single'], ['Double Elimination', 'double']] %>
+  </div>
+
+  <div>
+    <%= form.submit 'Create Championship' %>
+  </div>
+<% end %>

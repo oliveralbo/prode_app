@@ -1,0 +1,16 @@
+<h1><%= @championship.name %></h1>
+
+<p><strong>Team Count:</strong> <%= @championship.team_count %></p>
+<p><strong>Round Type:</strong> <%= @championship.round_type %></p>
+
+<h2>Matches</h2>
+<ul>
+  <% @matches.each do |match| %>
+    <li>
+      Match ID: <%= match.id %> - Teams: <%= match.team1 %> vs <%= match.team2 %>
+      <!-- Puedes agregar más detalles de los partidos aquí -->
+    </li>
+  <% end %>
+</ul>
+
+<%= link_to 'Back to Championships', championships_path %>
