@@ -10,13 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_10_14_002330) do
+ActiveRecord::Schema[7.2].define(version: 2024_10_30_010458) do
   # These are extensions that must be enabled in order to support this database
+  enable_extension "pgcrypto"
   enable_extension "plpgsql"
 
-  create_table "bets", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.bigint "match_id", null: false
+  create_table "bets", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "user_id", null: false
+    t.uuid "match_id", null: false
     t.integer "home_score"
     t.integer "away_score"
     t.datetime "created_at", null: false
@@ -25,17 +26,17 @@ ActiveRecord::Schema[7.2].define(version: 2024_10_14_002330) do
     t.index ["user_id"], name: "index_bets_on_user_id"
   end
 
-  create_table "championships", force: :cascade do |t|
+  create_table "championships", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name"
     t.date "start_date"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.integer "team_count"
     t.string "round_type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  create_table "matches", force: :cascade do |t|
-    t.bigint "championship_id", null: false
+  create_table "matches", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "championship_id", null: false
     t.string "home_team"
     t.string "away_team"
     t.datetime "date"
@@ -44,9 +45,9 @@ ActiveRecord::Schema[7.2].define(version: 2024_10_14_002330) do
     t.index ["championship_id"], name: "index_matches_on_championship_id"
   end
 
-  create_table "points", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.bigint "championship_id", null: false
+  create_table "points", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "user_id", null: false
+    t.uuid "championship_id", null: false
     t.integer "points"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -54,13 +55,11 @@ ActiveRecord::Schema[7.2].define(version: 2024_10_14_002330) do
     t.index ["user_id"], name: "index_points_on_user_id"
   end
 
-  create_table "users", force: :cascade do |t|
+  create_table "users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name"
     t.string "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "championship_id", null: false
-    t.index ["championship_id"], name: "index_users_on_championship_id"
   end
 
   add_foreign_key "bets", "matches"
@@ -68,5 +67,4 @@ ActiveRecord::Schema[7.2].define(version: 2024_10_14_002330) do
   add_foreign_key "matches", "championships"
   add_foreign_key "points", "championships"
   add_foreign_key "points", "users"
-  add_foreign_key "users", "championships"
 end
