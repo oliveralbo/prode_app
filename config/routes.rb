@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
   # Rutas anidadas para Championships, Matches y Bets
   resources :championships do
     resources :matches do
