@@ -10,7 +10,7 @@ class ChampionshipsController < ApplicationController
   def create
     @championship = Championship.new(championship_params)
     if @championship.save
-      redirect_to @championship, notice: 'Championship created successfully.'
+      redirect_to @championship, notice: "Championship created successfully."
     else
       render :new
     end
@@ -23,7 +23,7 @@ class ChampionshipsController < ApplicationController
 
   def leaderboard
     @championship = Championship.find(params[:championship_id])
-    @players = @championship.users.includes(:points).order('points.total DESC')
+    @players = @championship.users.includes(:points).order("points.total DESC")
   end
 
   private

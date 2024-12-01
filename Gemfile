@@ -35,12 +35,12 @@ gem "bootsnap", require: false
 # gem "image_processing", "~> 1.2"
 
 # Gema principal de ActiveAdmin
-gem 'activeadmin'
+gem "activeadmin"
 
 # Para la autenticación con Devise
-gem 'devise'
+gem "devise"
 
-gem 'sassc-rails'
+gem "sassc-rails"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem

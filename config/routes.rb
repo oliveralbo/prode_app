@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   end
 
   # Ruta para ver el ranking de puntos (leaderboard)
-  get 'leaderboard', to: 'championships#leaderboard', as: :leaderboard
+  get "leaderboard", to: "championships#leaderboard", as: :leaderboard
 
   # Define tu ruta raíz (podrías cambiarla según la página inicial que quieras)
   root "championships#index"

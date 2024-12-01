@@ -13,7 +13,7 @@ ActiveAdmin.register Championship do
   form do |f|
     f.inputs do
       f.input :name
-      f.input :status, as: :select, collection: ['pending', 'active', 'finished']
+      f.input :status, as: :select, collection: [ "pending", "active", "finished" ]
     end
     f.actions
   end
