@@ -8,10 +8,14 @@ Things you may want to cover:
 * Ruby version
 
 * System dependencies
-
+  - /admin --> user: oliveralbo2@gmail.com / pass: 123456
+  
 * Configuration
 
 * Database creation
+  - Levantar la bbdd  sudo service postgresql start
+  - en caso que no exista rails db:create a como sea
+  - rails db:migrate
 
 * Database initialization
   
@@ -23,4 +27,4 @@ Things you may want to cover:
 
 * Deployment instructions
 
-* ...
+
